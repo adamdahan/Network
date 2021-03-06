@@ -5,12 +5,12 @@
 //  Created by MoneyClip on 2021-02-09.
 //
 
-import UIKit
+import Foundation
 
-public final class Networking: NSObject {
+public final class HTTP: NSObject {
     
     // MARK: - Private functions
-    public static func getData(
+    public static func get(
         url: URL,
         completion: @escaping (Data?, URLResponse?, Error?) -> ()
     ) {
@@ -30,7 +30,7 @@ public final class Networking: NSObject {
     /// returns Result<Data> as completion handler
     public static func downloadImage(url: URL,
                                      completion: @escaping (Result<Data>) -> Void) {
-        Networking.getData(url: url) { data, response, error in
+        HTTP.get(url: url) { data, response, error in
             
             if let error = error {
                 completion(.failure(error))
